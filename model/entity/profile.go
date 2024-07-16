@@ -7,14 +7,10 @@ import (
 
 type Profile struct {
 	ID        uuid.UUID
-	Nik       types.AEADString
-	NikBidx   types.BIDXString
-	Name      types.AEADString
-	NameBidx  string
-	Phone     types.AEADString
-	PhoneBidx types.BIDXString
-	Email     types.AEADString
-	EmailBidx string
+	Nik       byte[] `enc:"sha256cbc" bidx_col:"nik_bidx" txt_heap_table:"nik_text_heap"`
+	Name      byte[] `enc:"sha256cbc" bidx_col:"name_bidx" txt_heap_table:"name_text_heap"`
+	Phone     byte[] `enc:"sha256cbc" bidx_col:"phone_bidx" txt_heap_table:"phone_text_heap"`
+	Email     byte[] `enc:"sha256cbc" bidx_col:"email_bidx" txt_heap_table:"email_text_heap"`
 	DOB       types.AEADString
 }
 
